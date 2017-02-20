@@ -1,0 +1,19 @@
+"""take a postFix expression and evaluate using a Stack structure"""
+def processPostfix(tokens):
+    theStack = Stack(100)
+    for each in tokens:
+        if each in "+*-/":
+            top2 = theStack.pop()
+            top1 = theStack.pop()
+            if each == "+":
+                newNum = top1+top2
+            if each == "-":
+                newNum = top1-top2
+            if each == "/":
+                newNum = top1/top2
+            if each =="*":
+                newNum = top1*top2
+        else:
+            newNum = int(each)
+        theStack.push(newNum)
+    return theStack.pop()
